@@ -68,7 +68,7 @@ class _settingsState extends State<settings> {
   ShowThemeBottomSheet() {
     showModalBottomSheet(
       context: context,
-      builder: (context) => themebottomsheet(),
+      builder: (context) => ThemeBottomSheet(),
     );
   }
 
