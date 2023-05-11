@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-
-
-
+import '../Provider/settings_provider.dart';
 
 class LanguageBottomSheet extends StatefulWidget {
-
   @override
   State<LanguageBottomSheet> createState() => _LanguageBottomSheetState();
 }
@@ -13,23 +11,36 @@ class LanguageBottomSheet extends StatefulWidget {
 class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
   @override
   Widget build(BuildContext context) {
+    var settingsProvider = Provider.of<SettingsProvider>(context);
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColor,
       ),
       child: Column(
         children: [
-          GetSelectedItem("English"),
+          InkWell(
+              onTap: () {
+                settingsProvider.ChangeLanguage("en");
+              },
+              child: settingsProvider.currentLocal == 'en'
+                  ? GetSelectedItem("English")
+                  : GetUnSelectedItem("English")),
           SizedBox(
             height: 50,
           ),
-          GetUnSelectedItem("عربي"),
+          InkWell(
+              onTap: () {
+                settingsProvider.ChangeLanguage("ar");
+              },
+              child: settingsProvider.currentLocal == 'en'
+                  ? GetUnSelectedItem("عربي")
+                  : GetSelectedItem("عربي")),
         ],
       ),
     );
   }
 
-  Widget GetSelectedItem(String title){
+  Widget GetSelectedItem(String title) {
     return Container(
       padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
@@ -52,7 +63,8 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
       ),
     );
   }
-  Widget GetUnSelectedItem(String title){
+
+  Widget GetUnSelectedItem(String title) {
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Row(
@@ -66,5 +78,4 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
       ),
     );
   }
-
 }

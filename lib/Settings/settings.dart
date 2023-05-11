@@ -3,6 +3,9 @@ import 'package:eslamic_app/Quran/Quran-tap.dart';
 import 'package:eslamic_app/Settings/Language_bottom_sheet.dart';
 import 'package:eslamic_app/Settings/theme_bottom_sheet.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../Provider/settings_provider.dart';
 
 class settings extends StatefulWidget {
   @override
@@ -12,15 +15,16 @@ class settings extends StatefulWidget {
 class _settingsState extends State<settings> {
   @override
   Widget build(BuildContext context) {
+    var settingsProvider = Provider.of<SettingsProvider>(context);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
+             Padding(
               padding: EdgeInsets.all(10.0),
-              child: Text('Theme'),
+              child: Text(AppLocalizations.of(context)!.settings_theme),
             ),
             InkWell(
               onTap: () {
@@ -30,7 +34,7 @@ class _settingsState extends State<settings> {
                 padding: const EdgeInsets.all(10),
                 width: double.infinity,
                 height: 50,
-                child: const Text("Dark"),
+                child:  Text(AppLocalizations.of(context)!.theme_dark),
                 decoration: BoxDecoration(
                     border: Border.all(
                   color: Theme.of(context).accentColor,
@@ -40,9 +44,9 @@ class _settingsState extends State<settings> {
             const SizedBox(
               height: 20,
             ),
-            const Padding(
+             Padding(
               padding: EdgeInsets.all(10.0),
-              child: Text('Language'),
+              child: Text(AppLocalizations.of(context)!.settings_language),
             ),
             InkWell(
               onTap: () {

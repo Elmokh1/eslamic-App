@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class SettingsProvider extends ChangeNotifier {
   ThemeMode currentMode = ThemeMode.dark;
+  String currentLocal ='ar';
 
   void changeTheme(ThemeMode newMode) {
     if (newMode == currentMode) return;
@@ -18,6 +19,12 @@ class SettingsProvider extends ChangeNotifier {
     return currentMode == ThemeMode.dark
         ? "images/dark_bg.png"
         : "images/default_bg.png";
+  }
+  void ChangeLanguage(String newLang){
+    if(currentLocal==newLang)return;
+    currentLocal=newLang;
+    notifyListeners();
+
   }
 }
 

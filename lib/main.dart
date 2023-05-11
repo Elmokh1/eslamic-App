@@ -7,9 +7,10 @@ import 'package:eslamic_app/Splash.dart';
 import 'package:eslamic_app/My_theme.dart';
 import 'package:eslamic_app/Settings/settings.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
-
 import 'Hadeth/hadeth_details_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 main() {
   runApp(
@@ -25,6 +26,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     var settingsProvider = Provider.of<SettingsProvider>(context);
     return MaterialApp(
+      locale: Locale(settingsProvider.currentLocal),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
       theme: MyTheme.lightTheme,

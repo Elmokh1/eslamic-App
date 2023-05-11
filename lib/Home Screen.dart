@@ -6,6 +6,7 @@ import 'package:eslamic_app/Sebha/sebha-tab.dart';
 import 'package:eslamic_app/Settings/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -47,29 +48,29 @@ class _HomeScreenState extends State<HomeScreen> {
             items: [
               BottomNavigationBarItem(
                   backgroundColor: Theme.of(context).primaryColor,
-                  icon: const ImageIcon(AssetImage("images/icon_quran.png")),
-                  label: "Quran"),
+                  icon:  ImageIcon(AssetImage("images/icon_quran.png")),
+                  label:AppLocalizations.of(context)!.quran_title),
               BottomNavigationBarItem(
                   backgroundColor: Theme.of(context).primaryColor,
                   icon: ImageIcon(AssetImage("images/icon_hadeth.png")),
-                  label: "Hadeth"),
+                  label: AppLocalizations.of(context)!.hadeth_title),
               BottomNavigationBarItem(
                   backgroundColor: Theme.of(context).primaryColor,
                   icon: ImageIcon(AssetImage("images/icon_sebha.png")),
-                  label: "Sebha"),
+                  label: AppLocalizations.of(context)!.sebha_title),
               BottomNavigationBarItem(
                   backgroundColor: Theme.of(context).primaryColor,
                   icon: ImageIcon(AssetImage("images/icon_radio.png")),
-                  label: "Radio"),
+                  label: AppLocalizations.of(context)!.radio_title),
               BottomNavigationBarItem(
                   backgroundColor: Theme.of(context).primaryColor,
                   icon: Icon(Icons.settings),
-                  label: "Settings"),
+                  label: AppLocalizations.of(context)!.settings_title),
             ],
           ),
           appBar: AppBar(
-            title: const Text(
-              "Islami",
+            title:  Text(
+              AppLocalizations.of(context)!.app_title,
             ),
           )),
     );
