@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
         Hadethdetails.routeName: (context) => Hadethdetails(),
         SplashScreen.routeName: (context) => SplashScreen(),
       },
-      initialRoute: SplashScreen.routeName,
+      initialRoute: HomeScreen.routeName,
     );
   }
 }

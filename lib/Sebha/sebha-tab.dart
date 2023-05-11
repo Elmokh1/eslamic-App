@@ -1,4 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../Provider/settings_provider.dart';
 
 class Sebha_tab extends StatefulWidget {
   @override
@@ -8,6 +13,7 @@ class Sebha_tab extends StatefulWidget {
 class _Sebha_tabState extends State<Sebha_tab> {
   int Sebhanum = 0;
   int index = 0;
+  int num = 0;
   List<String> tasbeh = [
     "سبحان الله",
     "الله اكبر ",
@@ -16,6 +22,7 @@ class _Sebha_tabState extends State<Sebha_tab> {
 
   @override
   Widget build(BuildContext context) {
+    var settingsProvider = Provider.of<SettingsProvider>(context);
     return Container(
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -24,21 +31,30 @@ class _Sebha_tabState extends State<Sebha_tab> {
             children: [
               Padding(
                 padding: EdgeInsets.only(top: 50.0),
-                child: Stack(alignment: Alignment.topCenter, children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: 75.0),
-                    child: Image(
-                      image: AssetImage(
-                        "images/body_sebha_logo.png",
+                child: Stack(
+                  children: [
+                    Container(
+                      alignment: Alignment.center,
+                      child:  Image(
+                        image: AssetImage(
+                          settingsProvider.getmainbacksebhalogo(),
+                        ),
                       ),
                     ),
-                  ),
-                  const Image(
-                    image: AssetImage(
-                      "images/head_sebha_logo.png",
+                    Container(
+                      padding: const EdgeInsetsDirectional.only(top: 65),
+                      alignment: Alignment.center,
+                      child: Transform.rotate(
+                        angle: num * pi / 18,
+                        child:  Image(
+                          image: AssetImage(
+                            settingsProvider.getmainbacksebhahead(),
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                ]),
+                  ],
+                ),
               ),
               const Padding(
                 padding: EdgeInsets.only(top: 20.0),
@@ -70,9 +86,10 @@ class _Sebha_tabState extends State<Sebha_tab> {
                       onTap: () {
                         setState(() {
                           Sebhanum = 0;
+                          num =0;
                         });
                       },
-                      child: Icon(Icons.refresh)),
+                      child: Icon(Icons.refresh, color: Colors.deepOrange)),
                 ],
               ),
               Padding(
@@ -97,16 +114,8 @@ class _Sebha_tabState extends State<Sebha_tab> {
                         onTap: () {
                           setState(() {
                             Sebhanum++;
-                            for(int i =0; i<=tasbeh.length; i++) {
-                              if (i > 0 && Sebhanum == 33) {
-                                tasbeh[i];
-                                Sebhanum = 0;
-                               }
-                                 // else if (i == 0 && Sebhanum == 33) {
-                              //   i = 2;
-                              //   Sebhanum = 0;
-                              // }
-                            }});
+                            num++;
+                          });
                         },
                         child: Container(
                           width: 137,
@@ -125,14 +134,17 @@ class _Sebha_tabState extends State<Sebha_tab> {
                       ),
                     ),
                     InkWell(
-                      child: Icon(Icons.arrow_forward_rounded),
+                      child: Icon(Icons.arrow_forward_rounded,
+                          color: Colors.deepOrange),
                       onTap: () {
                         if (index > 0) {
                           index = index - 1;
-                          Sebhanum =0;
+                          Sebhanum = 0;
+                          num =0;
                         } else {
                           index = 2;
-                          Sebhanum =0;
+                          Sebhanum = 0;
+                          num =0;
 
                         }
                         setState(() {});

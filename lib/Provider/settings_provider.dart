@@ -20,6 +20,16 @@ class SettingsProvider extends ChangeNotifier {
         ? "images/dark_bg.png"
         : "images/default_bg.png";
   }
+  String getmainbacksebhalogo() {
+    return currentMode == ThemeMode.dark
+        ? "images/body_sebha_dark.png"
+        : "images/body_sebha_logo.png";
+  }
+  String getmainbacksebhahead() {
+    return currentMode == ThemeMode.dark
+        ? "images/head_sebha_dark.png"
+        : "images/head_sebha_logo.png";
+  }
   void ChangeLanguage(String newLang){
     if(currentLocal==newLang)return;
     currentLocal=newLang;
@@ -28,27 +38,4 @@ class SettingsProvider extends ChangeNotifier {
   }
 }
 
-// import 'package:flutter/material.dart';
-//
-// class SettingsProvider extends ChangeNotifier {
-//   ThemeMode currentTheme = ThemeMode.dark;
-//
-//
-//   void changeTheme(ThemeMode newMode) {
-//     if (newMode == currentTheme) return;
-//     currentTheme = newMode;
-//     notifyListeners();
-//   }
-//
-//   bool isDark() {
-//     return currentTheme == ThemeMode.dark; // true OR false
-//   }
-//
-//   String getMainBackGround() {
-//     return currentTheme == ThemeMode.dark
-//         ? "images/dark_bg.png"
-//         : "images/default_bg.png";
-//   }
-//
-// }
-//
+

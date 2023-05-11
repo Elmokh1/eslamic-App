@@ -34,7 +34,11 @@ class _settingsState extends State<settings> {
                 padding: const EdgeInsets.all(10),
                 width: double.infinity,
                 height: 50,
-                child:  Text(AppLocalizations.of(context)!.theme_dark),
+                child:  Text(
+                  settingsProvider.isDark()
+                      ?AppLocalizations.of(context)!.theme_dark
+                      :AppLocalizations.of(context)!.theme_light
+                ),
                 decoration: BoxDecoration(
                     border: Border.all(
                   color: Theme.of(context).accentColor,
@@ -56,7 +60,12 @@ class _settingsState extends State<settings> {
                 padding: const EdgeInsets.all(10),
                 width: double.infinity,
                 height: 50,
-                child: const Text("English"),
+                child: Text(
+                    settingsProvider.currentLocal=='en'
+                    ?"English" :"عربي"
+
+                ),
+
                 decoration: BoxDecoration(
                     border: Border.all(
                   color: Theme.of(context).accentColor,
